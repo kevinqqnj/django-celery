@@ -14,6 +14,16 @@
 
 You should see services are ready:
 ```
+celerybeat_1    | celery beat v4.1.0 (latentcall) is starting.
+celerybeat_1    | __    -    ... __   -        _
+celerybeat_1    | LocalTime -> 2018-04-03 03:22:27
+celerybeat_1    | Configuration ->
+celerybeat_1    |     . broker -> redis://redis:6379//
+celerybeat_1    |     . loader -> celery.loaders.app.AppLoader
+celerybeat_1    |     . scheduler -> celery.beat.PersistentScheduler
+celerybeat_1    |     . db -> celerybeat-schedule
+celerybeat_1    |     . logfile -> [stderr]@%INFO
+celerybeat_1    |     . maxinterval -> 5.00 minutes (300s)
 celeryworker_1  |  -------------- celery@086fff8f2388 v4.1.0 (latentcall)
 celeryworker_1  | ---- **** -----
 celeryworker_1  | --- * ***  * -- Linux-4.9.89-boot2docker-x86_64-with-debian-8.10 2018-04-03 0
@@ -57,16 +67,6 @@ celeryworker_1  | [2018-04-03 02:37:07,230: INFO/MainProcess] Connected to redis
 
 Now you should see celery is working in first terminal:
 ```
-celerybeat_1    | celery beat v4.1.0 (latentcall) is starting.
-celerybeat_1    | __    -    ... __   -        _
-celerybeat_1    | LocalTime -> 2018-04-03 03:22:27
-celerybeat_1    | Configuration ->
-celerybeat_1    |     . broker -> redis://redis:6379//
-celerybeat_1    |     . loader -> celery.loaders.app.AppLoader
-celerybeat_1    |     . scheduler -> celery.beat.PersistentScheduler
-celerybeat_1    |     . db -> celerybeat-schedule
-celerybeat_1    |     . logfile -> [stderr]@%INFO
-celerybeat_1    |     . maxinterval -> 5.00 minutes (300s)
 celeryworker_1  | [2018-04-03 02:37:22,954: INFO/MainProcess] Received task: myapp.tasks.add[84562885-0e3e725deeab]
 celeryworker_1  | [2018-04-03 02:37:22,968: INFO/ForkPoolWorker-1] Task myapp.tasks.add[84562885-0e3e725deeab] succeeded in 0.007631423002749216s: 3
 celeryworker_1  | [2018-04-03 03:15:51,207: INFO/MainProcess] Received task: proj.celery.debug_task[7b80ed53-843b-4350-b
