@@ -17,11 +17,19 @@ services:
     <<: *web
     depends_on:
       - redis
-      
     env_file:
       - .env
     ports: []
     command: celery -A proj worker -l info
+
+  celerybeat:
+    <<: *web
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    ports: []
+    command: celery -A proj beat -l info
 
   redis:
     image: redis:3.0
