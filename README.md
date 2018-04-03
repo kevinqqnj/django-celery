@@ -50,6 +50,7 @@ celeryworker_1  | [2018-04-03 02:37:07,230: INFO/MainProcess] Connected to redis
 
 ## Run task
 1. open another terminal
+
 `docker-compose run --rm web bash`
 
 2. run command in bash
