@@ -11,7 +11,11 @@ services:
       - .env
     ports:
       - "5000:5000"
-    command: python /code/manage.py runserver 0.0.0.0:5000
+    #command: python manage.py runserver 0.0.0.0:5000
+    command: bash /start.sh
+
+  redis:
+    image: redis:3.0
 
   celeryworker:
     <<: *web
@@ -40,7 +44,4 @@ services:
     ports:
       - "5555:5555"
     command: celery -A proj flower --address=0.0.0.0 -l info
-  redis:
-    image: redis:3.0
-
 
