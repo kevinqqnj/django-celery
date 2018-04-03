@@ -80,3 +80,6 @@ wargsrepr': '{}', 'origin': 'gen12@fda78a089793', 'reply_to': '872bb33f-9556-33d
 ivered': None}, 'args': [], 'kwargs': {}, 'hostname': 'celery@086fff8f2388', 'is_eager': False, 'callbacks': None, 'errb
 acks': None, 'chain': None, 'chord': None, 'called_directly': False, '_protected': 1}>
 ```
+
+3. Monitor Celery in Flower
+open browser: http://localhost:5555/
