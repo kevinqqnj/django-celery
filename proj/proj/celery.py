@@ -1,5 +1,5 @@
 from __future__ import absolute_import, unicode_literals
-import os
+import os, time
 from celery import Celery
 from celery.schedules import crontab
 
@@ -25,13 +25,13 @@ def debug_task(self):
 @app.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
     # Calls test('hello') every 10 seconds.
-    sender.add_periodic_task(10.0, test.s('hello'), name='add every 10')
+    sender.add_periodic_task(20.0, test.s('hello'), name='add every 10')
 
     # Calls test('world') every 30 seconds
-    sender.add_periodic_task(20.0, test.s('world'), expires=10)
+    sender.add_periodic_task(30.0, test.s('world'), expires=100)
 
     # Calls test error
-    sender.add_periodic_task(30.0, test.s('ERROR'), expires=10)
+    sender.add_periodic_task(40.0, test.s('ERROR'), expires=100)
     
     # Executes every Monday morning at 7:30 a.m.
     sender.add_periodic_task(
@@ -41,6 +41,7 @@ def setup_periodic_tasks(sender, **kwargs):
 
 @app.task
 def test(arg):
+    time.sleep(25)
     print(arg)
     if arg == 'ERROR':
         1/0
